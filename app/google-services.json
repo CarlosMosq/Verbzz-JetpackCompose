@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "878080622045",
+    "firebase_url": "https://verbzz-app-default-rtdb.firebaseio.com",
+    "project_id": "verbzz-app",
+    "storage_bucket": "verbzz-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878080622045:android:d4c7d71b3979cd919f4a34",
+        "android_client_info": {
+          "package_name": "com.company.verbzz_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878080622045-i2degfph8e1an42fa5f1g4pffhlgctbj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.company.verbzz_app",
+            "certificate_hash": "11075b3f4b896fc61be1c09f010df312c064eff5"
+          }
+        },
+        {
+          "client_id": "878080622045-3h9s2l0q6qrtqqcj602cmiolvd9emjvo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChP_0lO1hwLIkaTv2_Kn_kQ5YQZsauHwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "878080622045-3h9s2l0q6qrtqqcj602cmiolvd9emjvo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

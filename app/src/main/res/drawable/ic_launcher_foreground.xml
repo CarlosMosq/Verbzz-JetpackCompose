@@ -1,0 +1,45 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+  <group android:scaleX="0.23766816"
+      android:scaleY="0.23766816"
+      android:translateX="25.38"
+      android:translateY="26.602802">
+    <path
+        android:pathData="m145.471,210.669 l-62.308,18.63 -48.069,-42.16 14.242,-60.8 62.315,-18.63 48.07,42.17 -14.25,60.79z"
+        android:strokeWidth="2.5"
+        android:fillColor="#ffc62a"
+        android:strokeColor="#ff9500"
+        android:fillType="evenOdd"/>
+    <path
+        android:pathData="m225.351,128.559 l-62.31,18.63 -48.07,-42.16 14.24,-60.794 62.31,-18.631 48.07,42.164 -14.24,60.791z"
+        android:strokeWidth="2.5"
+        android:fillColor="#ffc62a"
+        android:strokeColor="#ff9500"
+        android:fillType="evenOdd"/>
+    <path
+        android:pathData="m111.631,104.209 l-62.311,18.63 -48.07,-42.164 14.242,-60.794 62.312,-18.631 48.067,42.164 -14.24,60.795z"
+        android:strokeWidth="2.5"
+        android:fillColor="#ffc62a"
+        android:strokeColor="#ff9500"
+        android:fillType="evenOdd"/>
+    <path
+        android:pathData="m75.896,4.793s-58.763,15.234 -58.763,17.955c0,2.72 -13.602,52.233 -13.058,57.13 0,2.176 39.719,39.171 44.616,39.171 -19.043,-44.612 -29.381,-99.022 27.205,-114.26z"
+        android:strokeWidth="1"
+        android:fillType="evenOdd">
+    </path>
+    <path
+        android:pathData="m189.071,28.733s-58.76,15.234 -58.76,17.955c0,2.72 -13.6,52.231 -13.06,57.131 0,2.18 39.72,39.17 44.62,39.17 -19.04,-44.61 -29.38,-99.022 27.2,-114.26z"
+        android:strokeWidth="1"
+        android:fillType="evenOdd">
+    </path>
+    <path
+        android:pathData="m109.641,110.349s-58.766,15.23 -58.766,17.95 -13.602,52.24 -13.058,57.13c0,2.18 39.719,39.18 44.616,39.18 -19.044,-44.62 -29.381,-99.03 27.208,-114.26z"
+        android:strokeWidth="1"
+        android:fillType="evenOdd">
+    </path>
+  </group>
+</vector>

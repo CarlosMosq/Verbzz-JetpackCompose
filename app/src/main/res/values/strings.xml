@@ -1,0 +1,117 @@
+<resources>
+    <string name="app_name">JetVerbzz</string>
+    <string name="title">Verbzz</string>
+
+    <!-- login and authentication -->
+    <string name="getStarted">Get Started</string>
+    <string name="log_in">Log In</string>
+    <string name="log_out">Log Out</string>
+    <string name="style_phrase">Start small, work hard.</string>
+    <string name="email">Enter Your E-mail</string>
+    <string name="password">Enter Your Password</string>
+    <string name="account">Create Account</string>
+    <string name="forgotAccount">Forgot Your Password? <font color="#FF5722">Reset</font></string>
+    <string name="forgotAccountTitle">Forgot Your Password?</string>
+    <string name="noAccount">Don\'t have an Account? <font color="#FF5722">Sign Up</font></string>
+    <string name="continueLink">Continue</string>
+    <string name="back">Back</string>
+
+    <!-- random descriptors -->
+
+    <string name="conjugation">Verb Conjugations</string>
+    <string name="conjugationPractice">Conjugation Practice</string>
+    <string name="translation">Translation Practice</string>
+    <string name="chooseLanguage">Choose Language:</string>
+    <string name="enterVerb">Enter Verb</string>
+    <string name="customize">Customize Your Practice</string>
+    <string name="off" translatable="false"><font color="#373D3F">Off MIN</font></string>
+    <string name="fivemin" translatable="false">5 <font color="#373D3F">MIN</font></string>
+    <string name="start">Start</string>
+    <string name="selectTense">Select Tense:</string>
+    <string name="selectCount">Select Number:</string>
+    <string name="practice">Practice</string>
+    <string name="conjugationPlaceholder">they work</string>
+    <string name="translate">Translate</string>
+    <string name="answer">Answer</string>
+    <string name="checkAnswer">Check answer</string>
+    <string name="status">The correct answer is: </string>
+    <string name="correct">Correct!</string>
+    <string name="timePlaceholder" translatable="false">5:00</string>
+    <string name="percentagePlaceholder" translatable="false">100%</string>
+    <string name="fractionPlaceholder" translatable="false">0/1</string>
+    <string name="statistics">Statistics</string>
+    <string name="activity">Activity</string>
+    <string name="score">Score</string>
+    <string name="date">Date</string>
+    <string name="switchLanguage">Switch</string>
+    <string name="Purchases">Shopping</string>
+
+    <!-- Toast messages-->
+    <string name="languageNotSet">Current language not set</string>
+    <string name="verbNotFound">Verb not found, please verify orthography or try a different one</string>
+    <string name="forgotLinkSent">Link Successfully Sent. Please check your Inbox</string>
+    <string name="errorLinkSent">Error, Please Try Again</string>
+    <string name="accessGranted">Access Granted</string>
+    <string name="verifyEmail">Verification e-mail sent, please verify for security</string>
+    <string name="verifySent">Please verify your account. E-mail verification sent successfully</string>
+    <string name="incorrect">E-mail or Password Incorrect</string>
+    <string name="accountCreated">Account Created Successfully</string>
+    <string name="tryAgain">Please try again</string>
+    <string name="languageSet">Language Settings Saved</string>
+
+    <!-- Descriptions for accessible buttons -->
+    <string name="bee">Bee Image</string>
+    <string name="animatedBee">animated image of a bee</string>
+    <string name="description">animated image of a honey comb</string>
+    <string name="wave">colored curves</string>
+    <string name="homeButtonDescr">Main page with honeycomb image that allows access to main features</string>
+    <string name="statisticsPage">Statistics that allows you to verify your progress</string>
+    <string name="shoppingCart">Shopping Cart which directs user to purchases page</string>
+    <string name="shoppingSymbol">animated image of a shopping cart</string>
+    <string name="menuDrawer">Flag icon that allows to change the language you are practicing</string>
+    <string name="search">magnifying glass, to search verb results</string>
+    <string name="bttnLogOut">Image of an arrow indicating log out</string>
+    <string name="scroll">Scrollable screen</string>
+    <string name="timerIcon">Timer icon</string>
+    <string name="percentageImg">percentage symbol</string>
+    <string name="arrowIcon">Arrow icon</string>
+    <string name="options_menu">Options menu icon</string>
+
+    <!-- English Verb tenses and pronouns -->
+
+    <string name="english" translatable="false">English</string>
+    <string name="french" translatable="false">Français</string>
+
+    <string name="indicative" translatable="false">Indicative</string>
+    <string name="infinitive" translatable="false">Infinitive</string>
+    <string name="gerund" translatable="false">Gerund</string>
+    <string name="participle" translatable="false">Participle</string>
+    <string name="imperative" translatable="false">Imperative</string>
+
+    <string name="present" translatable="false">Present</string>
+
+    <string name="i" translatable="false">I</string>
+    <string name="you" translatable="false">You</string>
+    <string name="heShe" translatable="false">He/she/it</string>
+    <string name="we" translatable="false">We</string>
+    <string name="they" translatable="false">They</string>
+
+    <!-- french Verb tenses and pronouns -->
+
+    <string name="infinitif" translatable="false">Infinitif</string>
+    <string name="participe" translatable="false">Participe</string>
+    <string name="imperatif" translatable="false">Impératif</string>
+    <string name="presentFr" translatable="false">Présent</string>
+    <string name="passe" translatable="false">Passé</string>
+
+    <string name="tu" translatable="false">Tu</string>
+    <string name="nous" translatable="false">Nous</string>
+    <string name="vous" translatable="false">Vous</string>
+
+
+    <!-- Ad ids -->
+    <string name="test_Interstitial_Ad_ID" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="real_Interstitial_Ad_ID" translatable="false">ca-app-pub-3257840631399246/8115708870</string>
+    <string name="translationPlaceholder">to love</string>
+    <string name="disable">There are no products available at this time</string>
+</resources>

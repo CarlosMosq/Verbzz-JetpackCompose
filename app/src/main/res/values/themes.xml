@@ -1,0 +1,26 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.JetVerbzz" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <!-- main color of buttons -->
+        <item name="colorPrimary">#FFB300</item>
+        <item name="colorPrimaryVariant">#FF7800</item>
+        <item name="colorOnPrimary">#F7F7F7</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#FFBC97</item>
+        <item name="colorSecondaryVariant">#FFE300</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.JetVerbzz.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.JetVerbzz.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.JetVerbzz.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>
