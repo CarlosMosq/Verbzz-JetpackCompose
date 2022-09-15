@@ -4,7 +4,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
@@ -41,10 +41,9 @@ fun AppNavigation() {
     val timerViewModel = TimerViewModel()
     val adViewModel = AdViewModel()
     val randomizeVerbsAndTenses = RandomizeVerbsAndTenses()
-    val language: MutableState<String> = remember {
+    val language: MutableState<String> = rememberSaveable {
         mutableStateOf("")
     }
-    languageViewModel.getCurrentLanguage(language)
 
     NavHost(navController = navController,
         startDestination = ScreenList.SplashScreen.name) {
@@ -67,7 +66,8 @@ fun AppNavigation() {
             LoginScreen(
                 measurement = measurement,
                 navController = navController,
-                authViewModel = authViewModel
+                authViewModel = authViewModel,
+                languageState = language
             )
         }
 
@@ -88,10 +88,12 @@ fun AppNavigation() {
         }
 
         composable(ScreenList.MainScreen.name) {
+            languageViewModel.getCurrentLanguage(languageState = language)
             MainScreen(
                 navController = navController,
                 measurement = measurement,
-                languageViewModel = languageViewModel
+                languageViewModel = languageViewModel,
+                languageState = language
             )
         }
 

@@ -31,7 +31,8 @@ import com.company.verbzz_app.ui.theme.WindowMeasurement
 fun LoginScreen(
     measurement: WindowMeasurement,
     navController: NavController,
-    authViewModel: AuthViewModel
+    authViewModel: AuthViewModel,
+    languageState: MutableState<String>
 ) {
     val email = rememberSaveable { mutableStateOf("") }
     val password = rememberSaveable { mutableStateOf("") }
@@ -66,7 +67,9 @@ fun LoginScreen(
             authViewModel.signInWithEmailAndPassword(
                 email = email,
                 password = password,
-                context = context) {
+                context = context,
+                languageState = languageState
+            ) {
                 navController.navigate(ScreenList.MainScreen.name)
             }
         }

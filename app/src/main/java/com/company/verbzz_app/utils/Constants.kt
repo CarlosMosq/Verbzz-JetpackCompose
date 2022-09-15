@@ -1,8 +1,5 @@
 package com.company.verbzz_app.utils
 
-import androidx.compose.ui.platform.LocalContext
-import com.company.verbzz_app.R
-
 object Constants {
 
     const val BASE_URL = "https://raw.githubusercontent.com/"

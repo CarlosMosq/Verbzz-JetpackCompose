@@ -69,11 +69,11 @@ class FireRepository @Inject constructor(private val reference: DatabaseReferenc
 
     }
 
-    fun getCurrentLanguage(languageState: MutableState<String>) {
+    fun getCurrentLanguage(languageState: MutableState<String>, userID: String) {
         try {
             reference
                 .child("Current Language")
-                .child(userUID!!)
+                .child(userID)
                 .child("Current Language")
                 .addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {

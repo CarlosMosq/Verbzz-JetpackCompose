@@ -1,14 +1,17 @@
 package com.company.verbzz_app.components
 
 import android.content.Context
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -54,9 +57,12 @@ fun BottomClockAndStats(
 
     Surface(
         modifier = Modifier
-            .fillMaxWidth()
+            .width(((measurement.width/5)*4).dp)
             .height((measurement.biggest / 15).dp),
         color = MaterialTheme.colors.background,
+        elevation = 6.dp,
+        shape = RoundedCornerShape(8.dp),
+        border = BorderStroke(1.dp, Color.LightGray)
     ) {
         Row(
             modifier = Modifier.padding(3.dp),

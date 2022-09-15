@@ -34,15 +34,15 @@ import kotlinx.coroutines.launch
 fun MainScreen(
     navController: NavController,
     measurement: WindowMeasurement,
-    languageViewModel: LanguageViewModel
+    languageViewModel: LanguageViewModel,
+    languageState: MutableState<String>
 ) {
-    val currentLanguage = remember {
-        mutableStateOf("")
-    }
-    languageViewModel.getCurrentLanguage(currentLanguage)
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
+    val isLoaded = remember(languageState.value) {
+        mutableStateOf(languageState.value != "")
+    }
 
 Scaffold(
     scaffoldState = scaffoldState,
@@ -53,7 +53,7 @@ Scaffold(
     drawerContent = {
         DrawerContent(measurement = measurement) { languageToSet ->
             languageViewModel.setCurrentLanguage(language = languageToSet, context = context)
-            languageViewModel.getCurrentLanguage(languageState = currentLanguage)
+            languageViewModel.getCurrentLanguage(languageState = languageState)
             scope.launch { scaffoldState.drawerState.close() }
         }
     }
@@ -63,7 +63,7 @@ Scaffold(
         title = stringResource(id = R.string.practice),
         secondIcon = false,
         hasTopBar = true,
-        languageState = currentLanguage,
+        languageState = languageState,
         openDrawer = {
             scope.launch { scaffoldState.drawerState.open() }
         },
@@ -71,7 +71,20 @@ Scaffold(
         image = null,
         description = stringResource(id = R.string.description)
     ) {
-        LessonsAndAds(navController = navController, measurement = measurement)
+        if(!isLoaded.value) {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                println(languageState.value)
+                println(isLoaded.value)
+                CircularProgressIndicator(modifier = Modifier.size((measurement.biggest/10).dp))
+            }
+        }
+        else {
+            LessonsAndAds(navController = navController, measurement = measurement)
+        }
     }
 }
 //end of Scaffold
@@ -82,7 +95,7 @@ Scaffold(
 fun LessonsAndAds(navController: NavController, measurement: WindowMeasurement) {
     Column {
         LessonLayout(navController = navController, measurement = measurement)
-        AdView()
+        //for future ad set up if necessary
     }
 }
 
@@ -147,11 +160,6 @@ fun LessonLayout(navController: NavController, measurement: WindowMeasurement) {
             }
         }
     }
-}
-
-@Composable
-fun AdView() {
-    //google ad structure
 }
 
 @Composable

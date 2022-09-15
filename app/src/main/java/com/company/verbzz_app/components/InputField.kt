@@ -19,6 +19,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.company.verbzz_app.R
@@ -52,6 +53,7 @@ fun InputField(
     enabled: Boolean,
     measurement: WindowMeasurement,
     isSingleLine: Boolean = true,
+    fontSize: TextUnit = 18.sp,
     keyboardType: KeyboardType = KeyboardType.Text,
     imeAction: ImeAction = ImeAction.Next,
     onAction: KeyboardActions = KeyboardActions.Default
@@ -63,7 +65,7 @@ fun InputField(
         label = { Text(text = labelId) },
         singleLine = isSingleLine,
         textStyle = TextStyle(
-            fontSize = 18.sp,
+            fontSize = fontSize,
             color = MaterialTheme.colors.onSecondary),
         modifier = modifier
             .padding(bottom = 10.dp, start = 10.dp, end = 10.dp)

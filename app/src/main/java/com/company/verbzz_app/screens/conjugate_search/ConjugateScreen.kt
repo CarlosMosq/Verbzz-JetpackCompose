@@ -1,13 +1,20 @@
 package com.company.verbzz_app.screens.conjugate_search
 
+import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.company.verbzz_app.R
 import com.company.verbzz_app.components.*
@@ -31,6 +38,8 @@ fun ConjugateScreen(
     val verbSearchClicked = remember { mutableStateOf(false) }
     val moodButtonClicked = remember { mutableStateOf(false) }
     val verbState = remember { mutableStateOf("") }
+    val loaded = remember { mutableStateOf(false) }
+    val doesNotExist = remember { mutableStateOf(false) }
 
     Scaffold(
         scaffoldState = scaffoldState,
@@ -43,7 +52,9 @@ fun ConjugateScreen(
         drawerContent = {
             DrawerContent(measurement = measurement) { languageToSet ->
                 languageViewModel.setCurrentLanguage(language = languageToSet, context = context)
-                languageViewModel.getCurrentLanguage(languageState = languageState)
+                languageViewModel.getCurrentLanguage(
+                    languageState = languageState)
+                verbSearchClicked.value = false
                 scope.launch { scaffoldState.drawerState.close() }
             }
         }
@@ -66,17 +77,28 @@ fun ConjugateScreen(
                     verbListViewModel.getVerbData(
                         language = languageState.value,
                         verbText = verbState,
-                        context = context)
+                        context = context,
+                        loaded = loaded,
+                        doesNotExist = doesNotExist)
                 }
             },
             navController = navController,
             image = null,
             description = stringResource(id = R.string.description)
         ) {
-            if(!verbSearchClicked.value) {
+            if(!verbSearchClicked.value || doesNotExist.value) {
                 SplashBackground(measurement = measurement)
             }
-            else if (verbSearchClicked.value && !moodButtonClicked.value){
+            else if(verbSearchClicked.value && !loaded.value) {
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    CircularProgressIndicator(modifier = Modifier.size((measurement.biggest/10).dp))
+                }
+            }
+            else if (verbSearchClicked.value && loaded.value && !moodButtonClicked.value){
                 Moods(
                     language = languageState.value,
                     measurement = measurement) { mood ->
@@ -87,13 +109,16 @@ fun ConjugateScreen(
                     }
                 }
             }
-            else if (verbSearchClicked.value && moodButtonClicked.value){
+            else if (verbSearchClicked.value && moodButtonClicked.value && loaded.value){
                 ConjugatedVerbList(
                     measurement = measurement,
                     verbListViewModel = verbListViewModel,
                     languageState = languageState,
                     verb = verbState.value
                 )
+                BackHandler {
+                    moodButtonClicked.value = false
+                }
             }
         }
     }

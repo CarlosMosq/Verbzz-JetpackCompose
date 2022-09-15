@@ -24,6 +24,7 @@ class AuthViewModel @Inject constructor(private val repository: FireRepository) 
     fun signInWithEmailAndPassword(
         email: MutableState<String>,
         password: MutableState<String>,
+        languageState: MutableState<String>,
         context: Context, 
         goToMain: () -> Unit
     )
@@ -33,12 +34,13 @@ class AuthViewModel @Inject constructor(private val repository: FireRepository) 
                 .signInWithEmailAndPassword(email.value, password.value)
                 .addOnCompleteListener{ task ->
                     if(task.isSuccessful) {
-                        val user = auth.currentUser
+                        val user = task.result.user
                         if (user!!.isEmailVerified) {
                             Toast.makeText(
                                 context,
                                 context.getString(R.string.accessGranted),
                                 Toast.LENGTH_SHORT).show()
+                            repository.getCurrentLanguage(languageState, user.uid)
                             goToMain()
                         }
                         else {
@@ -92,6 +94,7 @@ class AuthViewModel @Inject constructor(private val repository: FireRepository) 
                                 context = context,
                                 userID = newUser!!
                             )
+                            loginToAssert()
                         }
                         else {
                             Toast.makeText(
@@ -126,10 +129,11 @@ class AuthViewModel @Inject constructor(private val repository: FireRepository) 
                         context,
                         context.getString(R.string.tryAgain),
                         Toast.LENGTH_SHORT).show()
+                    loginToAssert()
                 }
             }
         } catch (ex: Exception) {
-            Log.e("RESET_ERROR", "Error to send reset link to e-mail")
+            Log.e("RESET_ERROR", "Error to send reset link to e-mail: $ex")
         }
     }
 

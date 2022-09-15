@@ -150,10 +150,10 @@ fun GradedPracticeScreen(
                 text = correctAnswerCheck.value,
                 modifier = Modifier
                     .padding(1.dp)
-                    .alpha(if (enabled.value) 1f else 0f),
+                    .alpha(if (enabled.value) 1f else 0f)
+                    .wrapContentHeight(),
                 style = MaterialTheme.typography.caption,
-                color = colorAnswerState.value,
-                maxLines = 2
+                color = colorAnswerState.value
             )
 
             BottomClockAndStats(
@@ -207,6 +207,7 @@ fun VerbAndInputLayout(
             modifier = Modifier
                 .padding(1.dp)
                 .fillMaxWidth()
+                .wrapContentHeight()
         ) {
             Text(
                 text = pronounAndVerb.value,

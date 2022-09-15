@@ -25,9 +25,9 @@ class VerbListViewModel @Inject constructor(private val verbRepository: VerbRepo
     private var frenchData: DataOrException<FrenchModelItem, Boolean, Exception>
     = DataOrException(null, false, null)
     var moodList: DataOrException<List<List<String>>, Boolean, Exception>
-    = DataOrException(null, false, null)
+    = DataOrException(listOf(), false, null)
     var tenseList: DataOrException<List<String>, Boolean, Exception>
-            = DataOrException(null, false, null)
+            = DataOrException(listOf(), false, null)
 
     var pronoun: MutableState<String> = mutableStateOf("")
     var verb: MutableState<String> = mutableStateOf("")
@@ -37,25 +37,41 @@ class VerbListViewModel @Inject constructor(private val verbRepository: VerbRepo
     fun getVerbData(
         language: String,
         verbText: MutableState<String>,
-        context: Context
+        context: Context,
+        loaded: MutableState<Boolean> = mutableStateOf(false),
+        doesNotExist: MutableState<Boolean> = mutableStateOf(false)
     ) = viewModelScope.launch {
         try {
             if(language == "English") {
-                englishData.loading = true
+                loaded.value = false
                 val englishList = verbRepository.getEnglishVerbData()
                 val index = verbRepository.returnEnglishVerbPosition(englishList.data!!, verbText.value)
-                if(index >= 0) englishData.data = englishList.data!![index]
-                else Toast.makeText(context, R.string.verbNotFound, Toast.LENGTH_SHORT).show()
-                if(englishData.data != null) englishData.loading = false
-                println(englishData.data.toString())
+                if(index >= 0) {
+                    englishData.data = englishList.data!![index]
+                    if(englishData.data != null) {
+                        loaded.value = true
+                        doesNotExist.value = false
+                    }
+                }
+                else {
+                    doesNotExist.value = true
+                    Toast.makeText(context, R.string.verbNotFound, Toast.LENGTH_SHORT).show()
+                }
             } else {
-                frenchData.loading = true
+                loaded.value = false
                 val frenchList = verbRepository.getFrenchVerbData()
                 val index = verbRepository.returnFrenchVerbPosition(frenchList.data!!, verbText.value)
-                if(index >= 0) frenchData.data = frenchList.data!![index]
-                else Toast.makeText(context, R.string.verbNotFound, Toast.LENGTH_SHORT).show()
-                if(frenchData.data != null) frenchData.loading = false
-                println(frenchData.data.toString())
+                if(index >= 0) {
+                    frenchData.data = frenchList.data!![index]
+                    if(frenchData.data != null) {
+                        loaded.value = true
+                        doesNotExist.value = false
+                    }
+                }
+                else {
+                    doesNotExist.value = true
+                    Toast.makeText(context, R.string.verbNotFound, Toast.LENGTH_SHORT).show()
+                }
             }
         } catch (ex: Exception) {
             if(language == "English") {
@@ -515,10 +531,16 @@ class VerbListViewModel @Inject constructor(private val verbRepository: VerbRepo
         language: String,
         index: Int)
             : String {
-        val pronoun =
-            if(language == "English") returnPronounListEnglish(tense)[index]
-            else returnPronounListFrench(tense = tense, verb = verb)[index]
-        return String.format("%s%s", pronoun, if(list.size <= 6) list[index] else list[index * 2])
+        val pronoun = when(tense) {
+            "Impératif Présent", "Impératif Passé", "Participe Présent",
+            "Participe Passé", "Infinitif Présent", "Infinitif Passé",
+            "Imperative", "Participle", "Gerund" -> ""
+            "Infinitive" -> "to"
+            else -> if(language == "English") { returnPronounListEnglish(tense) }
+                else { returnPronounListFrench(tense = tense, verb = verb)
+                }[if(list.size <= 6) index else index / 2]
+        }
+        return String.format("%s%s", pronoun, list[index])
     }
 
     private fun returnMin(

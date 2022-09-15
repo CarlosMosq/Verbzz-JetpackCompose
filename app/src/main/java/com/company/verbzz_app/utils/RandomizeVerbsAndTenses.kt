@@ -1,7 +1,6 @@
 package com.company.verbzz_app.utils
 
 import androidx.lifecycle.ViewModel
-import kotlin.random.Random
 
 class RandomizeVerbsAndTenses : ViewModel() {
     private val hundredMostCommonEnglish = arrayOf(

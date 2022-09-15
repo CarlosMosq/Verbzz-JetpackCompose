@@ -74,93 +74,39 @@ fun ConjugatedVerbCard(
         modifier = Modifier
             .padding(5.dp)
             .width(measurement.smallest.dp)
-            .height((measurement.biggest / 3).dp)
+            .heightIn(0.dp, (measurement.biggest / 3).dp)
     ) {
-        Column(
-            modifier = Modifier.padding(top = 20.dp, bottom = 20.dp),
+        LazyColumn (
+            modifier = Modifier.padding(top = 20.dp, bottom = 20.dp).wrapContentHeight(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
-        ) {
-            Text(
-                text = tense,
-                style = MaterialTheme.typography.h5,
-                modifier = Modifier
-                    .background(MaterialTheme.colors.primary)
-                    .padding(start = 20.dp)
-                    .width(measurement.smallest.dp))
-            Spacer(modifier = Modifier.height(5.dp))
-            Text(
-                modifier = Modifier.width(measurement.smallest.dp),
-                style = MaterialTheme.typography.h6,
-                textAlign = TextAlign.Center,
-                text = verbListViewModel.formatLine(
-                    verb = verb,
-                    tense = tense,
-                    list = list,
-                    index = 0,
-                    language = language
+        ){
+            item {
+                Text(
+                    text = tense,
+                    style = MaterialTheme.typography.h5,
+                    modifier = Modifier
+                        .background(MaterialTheme.colors.primary)
+                        .padding(start = 20.dp)
+                        .width(measurement.smallest.dp))
+            }
+            item {
+                Spacer(modifier = Modifier.height(5.dp))
+            }
+            itemsIndexed(list) { index, _ ->
+                Text(
+                    modifier = Modifier.width(measurement.smallest.dp),
+                    style = MaterialTheme.typography.h6,
+                    textAlign = TextAlign.Center,
+                    text = verbListViewModel.formatLine(
+                        verb = verb,
+                        tense = tense,
+                        list = list,
+                        index = index,
+                        language = language
+                    )
                 )
-            )
-            Text(
-                modifier = Modifier.width(measurement.smallest.dp),
-                style = MaterialTheme.typography.h6,
-                textAlign = TextAlign.Center,
-                text = verbListViewModel.formatLine(
-                    verb = verb,
-                    tense = tense,
-                    list = list,
-                    index = 1,
-                    language = language
-                )
-            )
-            Text(
-                modifier = Modifier.width(measurement.smallest.dp),
-                style = MaterialTheme.typography.h6,
-                textAlign = TextAlign.Center,
-                text = verbListViewModel.formatLine(
-                    verb = verb,
-                    tense = tense,
-                    list = list,
-                    index = 2,
-                    language = language
-                )
-            )
-            Text(
-                modifier = Modifier.width(measurement.smallest.dp),
-                style = MaterialTheme.typography.h6,
-                textAlign = TextAlign.Center,
-                text = verbListViewModel.formatLine(
-                    verb = verb,
-                    tense = tense,
-                    list = list,
-                    index = 3,
-                    language = language
-                )
-            )
-            Text(
-                modifier = Modifier.width(measurement.smallest.dp),
-                style = MaterialTheme.typography.h6,
-                textAlign = TextAlign.Center,
-                text = verbListViewModel.formatLine(
-                    verb = verb,
-                    tense = tense,
-                    list = list,
-                    index = 4,
-                    language = language
-                )
-            )
-            Text(
-                modifier = Modifier.width(measurement.smallest.dp),
-                style = MaterialTheme.typography.h6,
-                textAlign = TextAlign.Center,
-                text = verbListViewModel.formatLine(
-                    verb = verb,
-                    tense = tense,
-                    list = list,
-                    index = 5,
-                    language = language
-                )
-            )
+            }
         }
     }
 }

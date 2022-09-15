@@ -17,7 +17,7 @@ class LanguageViewModel @Inject constructor(private val repository: FireReposito
 
         fun getCurrentLanguage(languageState: MutableState<String>)
         = viewModelScope.launch {
-            repository.getCurrentLanguage(languageState = languageState)
+            repository.getCurrentLanguage(languageState = languageState, userID = userUID!!)
         }
 
         fun setCurrentLanguage(language: String, context: Context)

@@ -20,6 +20,7 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.company.verbzz_app.R
 import com.company.verbzz_app.navigation.ScreenList
@@ -77,6 +78,7 @@ fun TopAppBar(
                        modifier = Modifier.width((measurement.width/2).dp),
                        valueState = text,
                        labelId = stringResource(id = R.string.enterVerb),
+                       fontSize = 12.sp,
                        enabled = true,
                        measurement = measurement)
                    Icon(
@@ -115,6 +117,7 @@ fun TopAppBar(
                }
            }
        },
-       backgroundColor = MaterialTheme.colors.onPrimary.copy(alpha = 0.3f)
+       backgroundColor = MaterialTheme.colors.onPrimary.copy(alpha = 0.3f),
+       modifier = Modifier.height(65.dp)
    )
 }
