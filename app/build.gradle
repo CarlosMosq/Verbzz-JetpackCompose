@@ -13,8 +13,8 @@ android {
         applicationId "com.company.verbzz_app"
         minSdk 29
         targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        versionCode 9
+        versionName "1.8"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

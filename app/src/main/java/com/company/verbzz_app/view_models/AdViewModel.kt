@@ -19,7 +19,7 @@ class AdViewModel : ViewModel() {
         val adRequest = AdRequest.Builder().build()
         InterstitialAd.load(
             context,
-            context.getString(R.string.test_Interstitial_Ad_ID),
+            context.getString(R.string.real_Interstitial_Ad_ID),
             adRequest,
             object: InterstitialAdLoadCallback() {
                 override fun onAdLoaded(interstitialAd: InterstitialAd) {
