@@ -9,18 +9,16 @@ import androidx.compose.runtime.Composable
 
 @SuppressLint("ConflictingOnColor")
 private val DarkColorPalette = darkColors(
-    primary = DarkYellow,
-    primaryVariant = Orange,
-    onPrimary = IcyWhite,
+    primary = LightGreen,
+    primaryVariant = LightPurple,
+    onPrimary = Black,
 
-    secondary = LightRose,
-    secondaryVariant = DarkOrange,
-    onSecondary = Black,
+    secondary = TextGray,
+    secondaryVariant = LightPurple,
+    onSecondary = LightGray,
 
-    surface = White,
-    background = IcyWhite
-
-
+    surface = Black,
+    background = Black
 )
 
 @SuppressLint("ConflictingOnColor")
@@ -38,7 +36,7 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun JetVerbzzTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
+fun JetVerbzzTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
     val colors = if (darkTheme) {
         DarkColorPalette
     } else {

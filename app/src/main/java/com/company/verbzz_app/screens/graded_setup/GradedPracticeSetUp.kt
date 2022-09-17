@@ -32,10 +32,8 @@ fun GradedPracticeSetUp(
     measurement: WindowMeasurement,
     language: MutableState<String>
 ) {
-    val selectedCount = remember {mutableStateOf("10")}
-    val selectedTense = remember {
-        mutableStateOf(if(language.value == "English") "Present" else "Tous")
-    }
+    val selectedCount = remember { mutableStateOf("") }
+    val selectedTense = remember { mutableStateOf("") }
     val time = remember { mutableStateOf("5") }
     val checkedState = remember { mutableStateOf(true) }
     val list = if(language.value == "English") englishTenses else frenchTenses
@@ -63,7 +61,11 @@ fun GradedPracticeSetUp(
                 selectedTense = selectedTense,
                 time = time,
                 checkedState = checkedState,
-            ) { verbCount, verbTense, timeOnOff ->
+            ) { verbNbr, tense, timeOnOff ->
+                val verbCount = if(verbNbr == "") 10 else verbNbr
+                val verbTense = if(tense == "") {
+                    if (language.value == "English") "Present" else "Tous"
+                } else tense
                 navController.navigate(route =
                     "${ScreenList.GradedPracticeScreen.name}/$verbCount/$verbTense/$timeOnOff")
             }

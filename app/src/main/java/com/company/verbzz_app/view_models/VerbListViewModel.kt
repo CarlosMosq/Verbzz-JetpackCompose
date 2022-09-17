@@ -535,7 +535,7 @@ class VerbListViewModel @Inject constructor(private val verbRepository: VerbRepo
             "Impératif Présent", "Impératif Passé", "Participe Présent",
             "Participe Passé", "Infinitif Présent", "Infinitif Passé",
             "Imperative", "Participle", "Gerund" -> ""
-            "Infinitive" -> "to"
+            "Infinitive" -> "to "
             else -> if(language == "English") { returnPronounListEnglish(tense) }
                 else { returnPronounListFrench(tense = tense, verb = verb)
                 }[if(list.size <= 6) index else index / 2]

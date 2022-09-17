@@ -13,7 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.company.verbzz_app.navigation.AppNavigation
 import com.company.verbzz_app.ui.theme.JetVerbzzTheme
 import com.google.android.gms.ads.MobileAds
@@ -48,11 +47,4 @@ fun VerbzzApp() {
                 AppNavigation()
             }
         })
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    JetVerbzzTheme {
-    }
 }
